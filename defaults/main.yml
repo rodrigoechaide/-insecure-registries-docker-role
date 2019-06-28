@@ -1,0 +1,12 @@
+---
+# Docker custom variables
+insecure_docker_registries:
+  registry_01:
+    url: ''
+    login: false
+    user: ''
+    pass: ''
+    cert: false
+    cert_file_url: ''
+
+docker_certs_path: '/etc/docker/certs.d'

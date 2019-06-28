@@ -1,0 +1,39 @@
+---
+- name: Boostraping, installing docker and docker-compose python libraries
+  pip:
+    name: ['docker']
+    state: present
+  become: true
+
+- name: Ensuring {{ docker_certs_path }} exists
+  file:
+    path: '{{ docker_certs_path }}/{{ item.value.url }}/'
+    state: directory
+  become: true
+  with_dict: '{{ insecure_docker_registries }}'
+  when: item.value.cert
+
+- name: Downloading private certificates
+  get_url:
+    url: '{{ item.value.cert_file_url }}'
+    dest: '{{ docker_certs_path }}/{{ item.value.url }}/ca.crt'
+  become: true
+  loop: "{{ lookup('dict', insecure_docker_registries) }}"
+  when: item.value.cert
+
+- name: Adding daemon.json
+  template:
+    src: daemon.json.Jinja2
+    dest: /etc/docker/daemon.json
+    backup: true
+  become: true
+  notify: restart docker
+
+- name: Log into private registry
+  docker_login:
+    registry: '{{ item.value.url }}'
+    username: '{{ item.value.user }}'
+    password: '{{ item.value.pass }}'
+  become: true
+  loop: "{{ lookup('dict', insecure_docker_registries) }}"
+  when: item.value.login

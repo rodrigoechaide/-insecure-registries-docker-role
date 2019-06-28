@@ -1,0 +1,29 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    docker_install_compose: false
+    insecure_docker_registries:
+      registry_01:
+        url: 'nexus.ascentio.com.ar:7443'
+        login: true
+        user: 'docker-anonymous'
+        pass: 'anonymous!'
+        cert: true
+        cert_file_url: 'http://files.ascentio.com.ar/files/nexus-registry-certs/nexus.ascentio.com.ar:7443.crt'
+      registry_02:
+        url: 'registry-dev.ascentio.com.ar'
+        login: true
+        user: 'docker-anonymous'
+        pass: 'anonymous!'
+        cert: true
+        cert_file_url: 'http://files.ascentio.com.ar/files/nexus-registry-certs/registry-dev.ascentio.com.ar.crt'
+      registry_03:
+        url: 'registry-cms.ascentio.com.ar'
+        login: true
+        user: 'docker-anonymous'
+        pass: 'anonymous!'
+        cert: true
+        cert_file_url: 'http://files.ascentio.com.ar/files/nexus-registry-certs/registry-cms.ascentio.com.ar.crt'
+  roles:
+    - role: insecure-registries-docker-role

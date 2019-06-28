@@ -1,0 +1,1 @@
+{ "insecure-registries" : [ {% for registries in insecure_docker_registries.values() %}{% if not loop.last %}"{{ registries.url }}", {% else %}"{{ registries.url }}"{% endif %}{% endfor %} ] }

@@ -18,7 +18,7 @@
     url: '{{ item.value.cert_file_url }}'
     dest: '{{ docker_certs_path }}/{{ item.value.url }}/ca.crt'
   become: true
-  loop: "{{ lookup('dict', insecure_docker_registries) }}"
+  with_dict: '{{ insecure_docker_registries }}'
   when: item.value.cert
 
 - name: Adding daemon.json
@@ -35,5 +35,5 @@
     username: '{{ item.value.user }}'
     password: '{{ item.value.pass }}'
   become: true
-  loop: "{{ lookup('dict', insecure_docker_registries) }}"
+  with_dict: '{{ insecure_docker_registries }}'
   when: item.value.login

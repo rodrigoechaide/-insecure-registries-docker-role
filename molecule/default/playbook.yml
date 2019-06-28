@@ -5,25 +5,11 @@
     docker_install_compose: false
     insecure_docker_registries:
       registry_01:
-        url: 'nexus.ascentio.com.ar:7443'
-        login: true
-        user: 'docker-anonymous'
-        pass: 'anonymous!'
-        cert: true
-        cert_file_url: 'http://files.ascentio.com.ar/files/nexus-registry-certs/nexus.ascentio.com.ar:7443.crt'
-      registry_02:
-        url: 'registry-dev.ascentio.com.ar'
-        login: true
-        user: 'docker-anonymous'
-        pass: 'anonymous!'
-        cert: true
-        cert_file_url: 'http://files.ascentio.com.ar/files/nexus-registry-certs/registry-dev.ascentio.com.ar.crt'
-      registry_03:
-        url: 'registry-cms.ascentio.com.ar'
-        login: true
-        user: 'docker-anonymous'
-        pass: 'anonymous!'
-        cert: true
-        cert_file_url: 'http://files.ascentio.com.ar/files/nexus-registry-certs/registry-cms.ascentio.com.ar.crt'
+        url: 'nexus.example.com.ar:7443'
+        login: false
+        user: ''
+        pass: ''
+        cert: false
+        cert_file_url: ''
   roles:
     - role: insecure-registries-docker-role

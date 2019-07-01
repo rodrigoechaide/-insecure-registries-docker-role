@@ -65,4 +65,4 @@ MIT
 Author Information
 ------------------
 
-Echaide Rodrigo.
+This role was created in 2019 by [Rodrigo Echaide](http://rodrigoechaide.com.ar/).

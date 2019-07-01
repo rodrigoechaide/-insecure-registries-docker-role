@@ -1,5 +1,6 @@
 Insecure Registries Docker Role
 ===============================
+[![Build Status](https://travis-ci.com/rodrigoechaide/insecure-registries-docker-role.svg?branch=master)](https://travis-ci.com/rodrigoechaide/insecure-registries-docker-role)
 
 Role to configure insecure registries into docker.
 

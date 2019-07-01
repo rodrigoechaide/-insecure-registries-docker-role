@@ -23,7 +23,7 @@
 
 - name: Adding daemon.json
   template:
-    src: daemon.json.Jinja2
+    src: daemon.json
     dest: /etc/docker/daemon.json
     backup: true
   become: true
